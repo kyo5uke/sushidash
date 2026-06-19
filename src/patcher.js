@@ -482,26 +482,45 @@
     });
   };
 
-  // ---- prefetch (PREFETCH_VERSION はハードコード。404 は warn でバージョン更新を促す) ----
-  const PREFETCH_VERSION = 'v1_3';
-  const PREFETCH_PATHS = [
-    `/files/${PREFETCH_VERSION}/Web.data.unityweb`,
-    `/files/${PREFETCH_VERSION}/Web.wasm.code.unityweb`,
-    `/files/${PREFETCH_VERSION}/Web.wasm.framework.unityweb`,
+  // ---- prefetch ----
+  // バージョン (例 v1_3) はサイト更新で変わる。ページが実際に参照している
+  // /files/<version>/ を拾い、取れなければ既定値にフォールバックする。
+  // prefetch は初回ロードの先読み最適化なので、版が外れても patch/cache 本体
+  // (ファイル名でマッチ) には影響しない。
+  const FALLBACK_VERSION = 'v1_3';
+  const PREFETCH_FILES = [
+    'Web.data.unityweb',
+    'Web.wasm.code.unityweb',
+    'Web.wasm.framework.unityweb',
   ];
-  for (const path of PREFETCH_PATHS) {
-    fetch(location.origin + path, { credentials: 'omit' })
-      .then(r => {
-        if (r.ok) {
-          log(`prefetched: ${path.split('/').pop()}`);
-        } else {
-          warn(
-            `prefetch ${r.status} for ${path} — ` +
-            `サイト側がファイルバージョンを更新した可能性があります ` +
-            `(patcher.js の PREFETCH_VERSION="${PREFETCH_VERSION}" を確認してください)`
-          );
-        }
-      })
-      .catch(() => { });
+
+  function prefetch(version) {
+    for (const name of PREFETCH_FILES) {
+      const path = `/files/${version}/${name}`;
+      // override 済みの window.fetch を通すので prefetch でも patch + cache される
+      fetch(location.origin + path, { credentials: 'omit' })
+        .then(r => {
+          if (r.ok) log(`prefetched: ${name} (${version})`);
+          else warn(`prefetch ${r.status} for ${path}`);
+        })
+        .catch(() => { });
+    }
   }
+
+  (async () => {
+    let version = FALLBACK_VERSION;
+    try {
+      const html = await realFetch(location.href, { credentials: 'same-origin' }).then(r => r.text());
+      const m = html.match(/files\/(v[0-9][0-9_]*)\//);
+      if (m) {
+        version = m[1];
+        if (version !== FALLBACK_VERSION) log(`detected build version: ${version}`);
+      } else {
+        warn(`build version not found in page; using fallback "${FALLBACK_VERSION}"`);
+      }
+    } catch (e) {
+      warn('version detection failed; using fallback:', e);
+    }
+    prefetch(version);
+  })();
 })();

@@ -73,9 +73,10 @@ Behavior is tunable via the `CONFIG` block at the top of `enhance.js` (fade dura
 ## Notes
 
 - Unofficial. Check sushida.net's terms of service yourself.
-- If the site bumps the file version (`v1_3`), the splash patch becomes a no-op and the original behavior returns (fail-safe). Prefetch will 404 and warn in the Console — update `PREFETCH_VERSION` in `patcher.js`.
+- The patch and cache match by filename, so they keep working even if the site bumps the file version (`v1_3` etc.). The prefetch version is auto-detected from the page, falling back to `v1_3` if not found (a miss only loses the first-load head start).
+- If a newer Unity changes the bundle layout, the splash patch fails safe to a no-op and the game starts normally.
 - No LZ4 encoder is implemented, so the first block is written back uncompressed. The data Unity reads grows by ~80KB (transfer from sushida.net is unchanged).
-- Ads appear ~1.5s later than usual.
+- Ads appear ~1.5s later than usual (tunable via `CONFIG` in `enhance.js`).
 
 ## License
 

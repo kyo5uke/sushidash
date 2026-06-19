@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Sushidash",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "寿司打の起動を速くする拡張機能",
   "host_permissions": [
     "https://sushida.net/*"

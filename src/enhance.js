@@ -1,4 +1,4 @@
-/* sushida-cache: canvas fade-in + 広告遅延ロード */
+/* sushidash: canvas fade-in + 広告遅延ロード */
 (function () {
   'use strict';
 
@@ -10,8 +10,8 @@
     AD_DELAY_AFTER_FIRST_DRAW_MS: 1500,
     CANVAS_FADE_DURATION_MS: 500,
     FAILSAFE_TIMEOUT_MS: 30_000,
-    LOG_PREFIX: '[sushida-cache]',
-    CANVAS_VISIBLE_CLASS: 'sushida-cache-canvas-shown',
+    LOG_PREFIX: '[sushidash]',
+    CANVAS_VISIBLE_CLASS: 'sushidash-canvas-shown',
   });
 
   const log = (...args) => console.log(CONFIG.LOG_PREFIX, ...args);
@@ -32,7 +32,7 @@
       }
     `;
     const style = document.createElement('style');
-    style.id = 'sushida-cache-fade-style';
+    style.id = 'sushidash-fade-style';
     style.textContent = css;
     (document.head || document.documentElement).appendChild(style);
   }

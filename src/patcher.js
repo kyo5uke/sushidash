@@ -1,4 +1,4 @@
-/* sushida-cache: Web.data.unityweb runtime patcher */
+/* sushidash: Web.data.unityweb runtime patcher */
 (function () {
   'use strict';
 
@@ -6,13 +6,13 @@
   window.__sushidaCacheInstalled = true;
 
   // ---- 設定 ----
-  const LOG_PREFIX = '[sushida-cache]';
+  const LOG_PREFIX = '[sushidash]';
   const log = (...a) => console.log(LOG_PREFIX, ...a);
   const warn = (...a) => console.warn(LOG_PREFIX, ...a);
 
   const PATCH_PATTERN = /Web\.data\.unityweb(\?|$)/;
   const INTERCEPT_PATTERN = /Web\.(data|wasm\.(code|framework))\.unityweb(\?|$)/;
-  const CACHE_NAME = 'sushida-cache-v1';
+  const CACHE_NAME = 'sushidash-v1';
 
   // block 0 内で一意な 24 byte。idx 12 の 0x01 (splash bool) を 0x00 に書換
   const SPLASH_CONTEXT_OLD = new Uint8Array([

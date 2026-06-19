@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Sushida Cache",
+  "name": "Sushidash",
   "version": "2.0.1",
   "description": "寿司打の読み込みを高速化する拡張機能！",
   "host_permissions": [

@@ -1,27 +1,27 @@
-# sushida-cache
+# sushidash
 
 [English](README.en.md) | 日本語
 
 寿司打 (Unity WebGL) の読み込みを高速化する Chrome 拡張。
 
-[![CI](https://github.com/kyo5uke/sushida-cache/actions/workflows/ci.yml/badge.svg)](https://github.com/kyo5uke/sushida-cache/actions/workflows/ci.yml)
+[![CI](https://github.com/kyo5uke/sushidash/actions/workflows/ci.yml/badge.svg)](https://github.com/kyo5uke/sushidash/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 ```text
-[sushida-cache] patcher initialized (XHR override active)
-[sushida-cache] intercepting XHR: https://sushida.net/files/v1_3/Web.data.unityweb
-[sushida-cache] splash byte patched at block 0 offset 4200
-[sushida-cache] web.data patched in 12.4ms: 7411331 → 7490398 B
-[sushida-cache] cache stored: Web.data.unityweb (7,490,398 B)
-[sushida-cache] canvas first draw via drawArrays
+[sushidash] patcher initialized (XHR override active)
+[sushidash] intercepting XHR: https://sushida.net/files/v1_3/Web.data.unityweb
+[sushidash] splash byte patched at block 0 offset 4200
+[sushidash] web.data patched in 12.4ms: 7411331 → 7490398 B
+[sushidash] cache stored: Web.data.unityweb (7,490,398 B)
+[sushidash] canvas first draw via drawArrays
 ```
 
-寿司打を開くたび Unity の Neutral ロゴ (splash) を 2 秒眺めるのは退屈。sushida-cache は
+寿司打を開くたび Unity の Neutral ロゴ (splash) を 2 秒眺めるのは退屈。sushidash は
 ファイルを bundle せず、ブラウザ内で `Web.data.unityweb` を動的にパッチして splash を切り、
 3 つの `.unityweb` を Cache Storage に貯めて 2 回目以降をネットワークゼロにします。
 
 > 個人の学習用に作った非公式拡張です。sushida.net の運営とは無関係。
-> バイナリをどう書き換えているか（UnityWebData / UnityFS / LZ4 / splash byte）は [Zenn 記事](articles/sushida-cache.md) に詳しく書きました。
+> バイナリをどう書き換えているか（UnityWebData / UnityFS / LZ4 / splash byte）は [Zenn 記事](articles/sushidash.md) に詳しく書きました。
 
 ## できること
 
@@ -33,7 +33,7 @@
 
 ## インストール
 
-[Releases](https://github.com/kyo5uke/sushida-cache/releases) から最新の `sushida-cache-*.zip` を落として展開し、
+[Releases](https://github.com/kyo5uke/sushidash/releases) から最新の `sushidash-*.zip` を落として展開し、
 
 1. `chrome://extensions/` を開く
 2. 右上の「デベロッパーモード」を ON
@@ -44,7 +44,7 @@
 ソースから入れる場合（開発者向け）:
 
 ```sh
-git clone https://github.com/kyo5uke/sushida-cache
+git clone https://github.com/kyo5uke/sushidash
 ```
 
 で clone して、手順 3 で `src/` フォルダを選択。
@@ -54,7 +54,7 @@ git clone https://github.com/kyo5uke/sushida-cache
 ## 使い方
 
 [sushida.net/play.html](https://sushida.net/play.html) を開くだけ。Neutral ロゴが出ずに
-ゲーム画面が直接フェードインすれば成功です。DevTools の Console に `[sushida-cache]` の
+ゲーム画面が直接フェードインすれば成功です。DevTools の Console に `[sushidash]` の
 ログが出ます。
 
 | ログ | 意味 |
@@ -77,7 +77,7 @@ git clone https://github.com/kyo5uke/sushida-cache
 3. LZ4 エンコーダは持たないので、書き換えたブロックは無圧縮で書き戻す（その分 ~80KB 増）
 4. patch 済みデータを Cache Storage に保存し、2 回目以降はそこから供給
 
-バイナリのパース手順やハマりどころは [Zenn 記事](articles/sushida-cache.md) に。
+バイナリのパース手順やハマりどころは [Zenn 記事](articles/sushidash.md) に。
 
 ## 注意事項
 

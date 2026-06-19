@@ -22,8 +22,8 @@
 ファイルを bundle せず、ブラウザ内で `Web.data.unityweb` を動的にパッチして splash を切り、
 3 つの `.unityweb` を Cache Storage に貯めて 2 回目以降をネットワークゼロにします。
 
-> 個人の学習用に作った非公式拡張です。sushida.net の運営とは無関係。
-> バイナリをどう書き換えているか（UnityWebData / UnityFS / LZ4 / splash byte）は [Zenn 記事](https://zenn.dev/kyo5uke/articles/ec6eb050427880) に詳しく書きました。
+個人の学習用に作った非公式拡張です。sushida.net の運営とは無関係。
+バイナリをどう書き換えているか（UnityWebData / UnityFS / LZ4 / splash byte）は [Zenn 記事](https://zenn.dev/kyo5uke/articles/ec6eb050427880) に詳しく書きました。
 
 ## できること
 

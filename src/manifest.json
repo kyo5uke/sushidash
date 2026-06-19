@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "Sushida Cache",
+  "version": "2.0.1",
+  "description": "寿司打の読み込みを高速化する拡張機能！",
+  "host_permissions": [
+    "https://sushida.net/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://sushida.net/*"
+      ],
+      "js": [
+        "patcher.js",
+        "enhance.js"
+      ],
+      "run_at": "document_start",
+      "world": "MAIN"
+    }
+  ]
+}

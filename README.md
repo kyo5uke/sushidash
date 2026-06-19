@@ -7,6 +7,8 @@
 [![CI](https://github.com/kyo5uke/sushidash/actions/workflows/ci.yml/badge.svg)](https://github.com/kyo5uke/sushidash/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
+![拡張あり（上）と拡張なし（下）の起動比較。ページ転移のタイミングを揃えてある](docs/compare.gif)
+
 ```text
 [sushidash] patcher initialized (XHR override active)
 [sushidash] intercepting XHR: https://sushida.net/files/v1_3/Web.data.unityweb
@@ -21,7 +23,7 @@
 3 つの `.unityweb` を Cache Storage に貯めて 2 回目以降をネットワークゼロにします。
 
 > 個人の学習用に作った非公式拡張です。sushida.net の運営とは無関係。
-> バイナリをどう書き換えているか（UnityWebData / UnityFS / LZ4 / splash byte）は [Zenn 記事](articles/sushidash.md) に詳しく書きました。
+> バイナリをどう書き換えているか（UnityWebData / UnityFS / LZ4 / splash byte）は [Zenn 記事](https://zenn.dev/kyo5uke/articles/ec6eb050427880) に詳しく書きました。
 
 ## できること
 
@@ -77,7 +79,7 @@ git clone https://github.com/kyo5uke/sushidash
 3. LZ4 エンコーダは持たないので、書き換えたブロックは無圧縮で書き戻す（その分 ~80KB 増）
 4. patch 済みデータを Cache Storage に保存し、2 回目以降はそこから供給
 
-バイナリのパース手順やハマりどころは [Zenn 記事](articles/sushidash.md) に。
+バイナリのパース手順やハマりどころは [Zenn 記事](https://zenn.dev/kyo5uke/articles/ec6eb050427880) に。
 
 ## 注意事項
 

@@ -7,7 +7,7 @@
 [![CI](https://github.com/kyo5uke/sushidash/actions/workflows/ci.yml/badge.svg)](https://github.com/kyo5uke/sushidash/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-![拡張あり（上）と拡張なし（下）の起動比較。ページ転移のタイミングを揃えてある](docs/compare.gif)
+![拡張あり（上）と拡張なし（下）の起動比較](docs/compare.gif)
 
 ```text
 [sushidash] patcher initialized (XHR override active)

@@ -7,7 +7,7 @@ A Chrome extension that speeds up loading of Sushida (寿司打, a Unity WebGL t
 [![CI](https://github.com/kyo5uke/sushidash/actions/workflows/ci.yml/badge.svg)](https://github.com/kyo5uke/sushidash/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-![Startup comparison: with the extension (top) vs without (bottom)](docs/compare.gif)
+![Startup comparison: with the extension (top) and without it (bottom)](docs/compare.gif)
 
 ```text
 [sushidash] patcher initialized (XHR override active)
